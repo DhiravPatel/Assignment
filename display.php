@@ -62,9 +62,9 @@
                     <th width="8%">First Name</th>
                     <th width="8%">Last Name</th>
                     <th width="8%">Country</th>
-                    <th width="15%">Emaili</th>
+                    <th width="15%">Email</th>
                     <th width="8%">Phone</th>
-                    <th width="8%">caste</th>
+                    <th width="8%">Caste</th>
                     <th width="12%">Language</th>
                     <th width="10%">Address</th>
                     <th width="25%">Operations</th>
