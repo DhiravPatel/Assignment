@@ -10,6 +10,9 @@
 
     $result = mysqli_fetch_assoc($data);
 
+    $language = $result['language'];
+    $language1 = explode(",",$language);
+
 ?>
 
 <!DOCTYPE html>
@@ -17,12 +20,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Update Form</title>
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
 </head>
 <body>
     <div class="container">
-        <form action="#" method="post">
+        <form action="#" method="POST">
         <div class="title">
             Update Details
         </div>
@@ -52,28 +55,38 @@
 
 
             <div class="input_field">
-                <label>Gender</label>
+                <label>Country</label>
                 <div class="custom_select">
 
-                    <select name="gender" required>
+                    <select name="country" required>
                         <option value="">Select</option>
 
-                        <option value="Male"
+                        <option value="India"
                             <?php
-                                if($result['gender'] == 'Male'){
+                                if($result['country'] == 'India'){
                                     echo "selected";
                                 }
                             ?>
                         >
-                        Male</option>
-                        <option value="Female"
+                        India</option>
+
+                        <option value="USA"
                             <?php
-                                if($result['gender'] == 'Female'){
+                                if($result['country'] == 'USA'){
                                     echo "selected";
                                 }
                             ?>
                         >
-                        Female</option>
+                        USA</option>
+
+                        <option value="Canada"
+                            <?php
+                                if($result['country'] == 'Canada'){
+                                    echo "selected";
+                                }
+                            ?>
+                        >
+                        Canada</option>
                     </select>
                 </div>
             </div>
@@ -94,7 +107,7 @@
                 <input type="radio" name="r1" value="General" required
                 
                 <?php
-                    if($result[caste] == "General"){
+                    if($result['caste'] == 'General'){
                         echo "checked";
                     }
                 ?>
@@ -103,7 +116,7 @@
                 <input type="radio" name="r1" value="OBC" required
                 
                 <?php
-                    if($result[caste] == "OBC"){
+                    if($result['caste'] == "OBC"){
                         echo "checked";
                     }
                 ?>
@@ -112,7 +125,7 @@
                 <input type="radio" name="r1" value="SC" required
                 
                 <?php
-                    if($result[caste] == "SC"){
+                    if($result['caste'] == "SC"){
                         echo "checked";
                     }
                 ?>
@@ -121,12 +134,44 @@
                 <input type="radio" name="r1" value="ST" required
                 
                 <?php
-                    if($result[caste] == "ST"){
+                    if($result['caste'] == "ST"){
                         echo "checked";
                     }
                 ?>
                 
                 ><label style="margin-left:5px;">ST</label>
+            </div>
+
+
+            <div class="input_field" >
+                <label style="margin-right:70px;">Language</label>
+                <input type="checkbox" name="language[]" value="English"
+                
+                <?php
+                    if(in_array('English',$language1)){
+                        echo "checked";
+                    }
+                ?>
+                
+                ><label style="margin-left:5px;">English</label>
+                <input type="checkbox" name="language[]" value="Gujarati"
+                
+                <?php
+                    if(in_array('Gujarati',$language1)){
+                        echo "checked";
+                    }
+                ?>
+                
+                ><label style="margin-left:5px;">Gujarati</label>
+                <input type="checkbox" name="language[]" value="Hindi"
+                
+                <?php
+                    if(in_array('Hindi',$language1)){
+                        echo "checked";
+                    }
+                ?>
+                
+                ><label style="margin-left:5px;">Hindi</label>
             </div>
  
 
@@ -163,18 +208,22 @@
         $lname = $_POST['lname'];
         $pwd = $_POST['password'];
         $cpwd = $_POST['conpassword'];
-        $gender = $_POST['gender'];
+        $country = $_POST['country'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $caste = $_POST['r1'];
+
+        $lang = $_POST['language'];
+        $lang1 = implode(",",$lang);
+        
         $address = $_POST['address'];
 
 
-        if($fname !="" && $lname !="" && $pwd !="" && $gender !="" && $email !="" && $phone !="" && $address !="" ){
+        if($fname !="" && $lname !="" && $pwd !="" && $country !="" && $email !="" && $phone !="" && $address !="" ){
 
-        $query = "INSERT INTO USERDATA(fname,lname,password,cpassword,gender,email,phone,caste,address) VALUES('$fname','$lname','$pwd','$cpwd','$gender','$email','$phone','$caste',$address')";
+        $query = "INSERT INTO USERDATA(fname,lname,password,cpassword,country,email,phone,caste,language,address) VALUES('$fname','$lname','$pwd','$cpwd','$country','$email','$phone','$caste','$lang','$address')";
 
-        $query = "UPDATE userdata set fname='$fname',lname='$lname',password='$pwd',cpassword='$cpwd',gender='$gender',email='$email',phone='$phone',caste='$caste',address='$address' WHERE id='$id'";
+        $query = "UPDATE userdata set fname='$fname',lname='$lname',password='$pwd',cpassword='$cpwd',country='$country',email='$email',phone='$phone',caste='$caste' ,language='$lang1',address='$address' WHERE id='$id'";
 
         $data = mysqli_query($conn,$query);
 

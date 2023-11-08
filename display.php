@@ -3,7 +3,7 @@
     <title>Display</title>        
     <style>
         body{
-            background: #D071f9;
+            background: rgb(230, 74, 108);
         }
         table{
             background-color: white;
@@ -18,9 +18,16 @@
             width:80px;
             font-weight: bold;
             cursor: pointer;
+            
         }
         .delete{
             background-color: red;
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+        .update{
+        
+            margin-left: 15px;
         }
     </style>
 
@@ -51,14 +58,15 @@
         <center><table border="3" cellspacing="7" width="90%" >
                 <tr>
                     
+                    <th width="5%">Image</th>
                     <th width="8%">First Name</th>
                     <th width="8%">Last Name</th>
-                    <th width="8%">Gender</th>
-                    <th width="20%">Emaili</th>
-                    <th width="10%">Phone</th>
-                    <th width="10%">caste</th>
-                    <th width="10%">Language</th>
-                    <th width="20%">Address</th>
+                    <th width="8%">Country</th>
+                    <th width="15%">Emaili</th>
+                    <th width="8%">Phone</th>
+                    <th width="8%">caste</th>
+                    <th width="12%">Language</th>
+                    <th width="10%">Address</th>
                     <th width="25%">Operations</th>
                 </tr>
 
@@ -78,9 +86,10 @@
         do{
             echo "<tr>
                     
+                    <td><img src='".$result['std_image']."' height='100px' width='100px'></td>
                     <td>".$result['fname']."</td>
                     <td>".$result['lname']."</td>
-                    <td>".$result['gender']."</td>
+                    <td>".$result['country']."</td>
                     <td>".$result['email']."</td>
                     <td>".$result['phone']."</td>
                     <td>".$result['caste']."</td>

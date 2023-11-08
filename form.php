@@ -1,5 +1,5 @@
 <?php
-    include('connection.php');
+    include("connection.php");
 ?>
 
 <!DOCTYPE html>
@@ -8,11 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
 </head>
 <body>
     <div class="container">
-        <form action="#" method="POST">
+        <form action="#" method="POST" enctype="multipart/form-data">
         <div class="title">
             Registration Form
         </div>
@@ -42,12 +42,13 @@
 
 
             <div class="input_field">
-                <label>Gender</label>
+                <label>Country</label>
                 <div class="custom_select">
-                    <select name="gender" required>
+                    <select name="country" required>
                         <option value="">Select</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
+                        <option value="India">India</option>
+                        <option value="USA">USA</option>
+                        <option value="Canada">Canada</option>
                     </select>
                 </div>
             </div>
@@ -85,6 +86,12 @@
                 <textarea class="textarea" name="address" required></textarea>
             </div>
 
+            <div class="input_field">
+                <label>Upload Image</label>
+                <input type="file" name="uploadfile"><br><br>
+                
+            </div>
+
 
             <div class="input_field terms">
                 <label class="check">
@@ -113,25 +120,35 @@
         $lname = $_POST['lname'];
         $pwd = $_POST['password'];
         $cpwd = $_POST['conpassword'];
-        $gender = $_POST['gender'];
+        $country = $_POST['country'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $caste = $_POST['r1'];
         $lang = $_POST['language'];
-        $lan1 = implode(",",$lang);
+        $lang1 = implode(",",$lang);
         $address = $_POST['address'];
 
 
-        if($fname !="" && $lname !="" && $pwd !="" && $gender !="" && $email !="" && $phone !="" && $address !="" ){
+      
+         $filename = $_FILES["uploadfile"]["name"];
+         $tempname = $_FILES["uploadfile"]["tmp_name"];
+         $folder = "images/".$filename;
+        
+         move_uploaded_file($tempname,$folder);
+        //  echo "<img src='$folder'  height='100px' width='100px'>";
 
-        $query = "INSERT INTO USERDATA(fname,lname,password,cpassword,gender,email,phone,caste,language,address) VALUES('$fname','$lname','$pwd','$cpwd','$gender','$email','$phone','$caste','$lan1',$address')";
+
+
+        if($fname !="" && $lname !="" && $pwd !="" && $country !="" && $email !="" && $phone !="" && $address !="" ){
+
+        $query = "INSERT INTO USERDATA(std_image,fname,lname,password,cpassword,country,email,phone,caste,language,address) VALUES('$folder','$fname','$lname','$pwd','$cpwd','$country','$email','$phone','$caste','$lang1','$address')";
 
         $data = mysqli_query($conn,$query);
 
         if($data){
-            echo "Registraion Successful";
+            echo "<script>alert('Registraion Successful')</script>";
         }else{
-            echo "Failed";
+            echo "Failed".mysqli_error();
         }
     }
    

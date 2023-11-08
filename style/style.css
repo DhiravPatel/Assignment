@@ -4,8 +4,12 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #D071f9;
+    /* background-color: #D071f9; */
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKkblcfjFYAuRLDjdwkxV4GQc-qk5LjSvvpg&usqp=CAU');
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 0 10px;
+    overflow: hidden;
 }
 .container{
 
@@ -20,7 +24,8 @@ body{
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 25px;
-    color: #D071f9;
+    /* color: #D071f9; */
+    color: rgb(230, 74, 108);
     text-transform: uppercase;
     text-align: center; 
 }
@@ -42,7 +47,7 @@ body{
 {
     width: 100%;
     outline: none;
-    border: 1px solid #D071f9;
+    border: 1px solid rgb(230, 74, 108);;
     font-size: 15px;
     padding: 8px 10px;
     border-radius: 3px;
@@ -65,7 +70,7 @@ body{
     width: 100%;
     height: 100%;
     padding: 8px 10px;
-    border: 1px solid #D071f9;
+    border: 1px solid rgb(230, 74, 108);;
     border-radius: 3px;
     outline: none;
 }
@@ -75,7 +80,7 @@ body{
     top: 12px;
     right: 10px;
     border: 8px solid black;
-    border-color: #D071f9 transparent transparent transparent ;
+    border-color: rgb(230, 74, 108) transparent transparent transparent ;
     pointer-events: none;
 }
 .container .form .input_field .input:focus,
@@ -105,7 +110,7 @@ body{
 .container .form .input_field .check .checkmark {
     width: 15px;
     height: 15px;
-    border: 1px solid #D071f9;
+    border: 1px solid rgb(230, 74, 108);
     display: block;
     position: relative;
     /* background: #D071f9; */
@@ -123,7 +128,7 @@ body{
     transform: rotate(-45deg);
 }
 .container .form .input_field .check input[type="checkbox"]:checked ~ .checkmark{
-    background: #D071f9;
+    background: rgb(230, 74, 108);;
 }
 .container .form .input_field .check input[type="checkbox"]:checked ~ .checkmark:before{
     display: block;
@@ -133,7 +138,7 @@ body{
     padding: 8px 10px;
     font-size: 15px;
     border: 0;
-    background: #D071f9;
+    background: rgb(230, 74, 108);;
     color: white;
     cursor: pointer;
     border-radius: 3px;
